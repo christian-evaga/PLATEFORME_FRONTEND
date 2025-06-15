@@ -1,0 +1,13 @@
+<!-- <div #popupRef class="none">
+    <div class=""><img width="20" src="message_svg.svg">
+    <span>{{ message }}</span>
+    </div>
+    <img (click)="close()" width="13" class="delete" src="delete_svg.svg">
+</div> -->
+
+<div *ngIf="display" class="view" [ngClass]="typePopup">
+    <div class=""><img width="20" src="message_svg.svg">
+    <span>{{ message }}</span>
+    </div>
+    <img (click)="fermer()" width="13" class="delete" src="delete_svg.svg">
+</div>

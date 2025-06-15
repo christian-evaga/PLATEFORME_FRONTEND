@@ -1,0 +1,201 @@
+<span class="fillAriane1 mb-4"><span (click)="goToHistorique()" class="accueil">Accueil </span>-> Bordereaux</span>
+<form id="form" enctype="multipart/form-data" [formGroup]="bordereauForm" class="form px-5 py-3 d-flex flex-column">
+    <span class="fillAriane">BORDEREAUX</span>
+    <div class="header d-flex justify-content-between">
+        <b><h5 class="title my-2">Ajouter un bordereau</h5></b>
+        <span>1--2--3</span>
+    </div>
+    <div class="typeProduit d-flex flex-column">
+        <span class="titre">Type du produit</span>
+        <div class="row">
+            <div class="form-group col-md-6 col-12">
+                <label class="">Numero bordereau :<span class="requis"> *</span></label>
+                <input [formControl]="numBordCtrl" type="text" class="disable p-1" placeholder="Numero bordereau" readonly required/>
+            </div>
+            <div *ngIf="gestionService.currentReponse==undefined" class="form-group d-flex align-items-center col-md-6 col-12">
+                <label for="type-produit">Selectionnez votre produit</label>
+                <input type="radio" [formControl]="typeProduitCtrl" name="type-produit" id="cacao-radio" class="form-check mx-4" value="cacao" checked><label for="cacao-radio">Cacao</label>                 
+                <input type="radio" [formControl]="typeProduitCtrl" name="type-produit" id="coffe-arabica-radio" class="form-check mx-4" value="cafeArabica"><label for="coffe-arabica-radio">Café Arabica</label>
+                <input type="radio" [formControl]="typeProduitCtrl" name="type-produit" id="coffe-robusta-radio" class="form-check mx-4" value="cafeRobusta"><label for="coffe-robusta-radio">Café Robusta</label>
+            </div>
+            <div *ngIf="gestionService.currentReponse!=undefined" class="form-group d-flex align-items-center col-md-6 col-12">
+                <span>{{gestionService.currentReponse.typeProduit}}</span>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="InfoAcheteur d-flex flex-column">
+        <span class="titre">Informations de l'exportateur</span>
+        <div class="row my-1">
+            <div class="nomStructure form-group col-md-6 col-12">
+                <label class="">Nom de la structure :<span class="requis"> *</span></label>
+                <input [value]="nomEntrepriseExportateurCtrl" type="text" readonly  class="disable p-1" placeholder="Nom de la structure" required/>
+            </div>
+            <div class="numProStructure form-group col-md-6 col-12">
+                <label class="">Numero carte pro structure:<span class="requis"> *</span></label>
+                <input [value]="codeEntrepriseExportateurCtrl" type="text" readonly class="disable p-1" placeholder="EX:CE1023564" required/>
+            </div>
+        </div>
+        <div class="row my-1">
+            <div class="nomAcheteur form-group col-md-6 col-12">
+                <label class="">Nom du mandataire :<span class="requis"> *</span></label>
+                <input [formControl]="nomExportateurCtrl" type="text" class="form-control" placeholder="Nom de l'acheteur" required/>
+            </div>
+            <div class="numProAcheteur form-group col-md-6 col-12">
+                <label class="">Numero carte pro mandataire:<span class="requis"> *</span></label>
+                <input [formControl]="numCarteProExportateurCtrl" type="text" class="form-control" placeholder="EX:CE1023564" required/>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="DetailVente d-flex flex-column">
+        <span class="titre">Details de l'achat du produit</span>
+        <div class="row my-1">
+            <div class="region form-group col-md-4 col-12">
+                <label class="">Nom cooperative :<span class="requis"> *</span></label>
+                <input [formControl]="nomCooperativeCtrl" type="text" class="form-control" placeholder="Nom cooperative" required/>
+            </div>
+            <div class="arrondissement form-group col-md-4 col-12">
+                <label class="">numero de télephone cooperative :</label>
+                <input [formControl]="numeroCooperativeCtrl" type="tel" class="form-control" placeholder="numero de télephone cooperative"/>
+            </div>
+            <div class="departement form-group col-md-4 col-12">
+                <label class="">Address e-mail cooperative:</label>
+                <input [formControl]="emailCooperativeCtrl" type="email" class="form-control" placeholder="Address e-mail cooperative"/>
+            </div>
+        </div>
+        <div class="row my-1">
+            <div class="region form-group col-md-4 col-12">
+                <label class="">Nom responsable :<span class="requis"> *</span></label>
+                <input [formControl]="nomVendeurCtrl" type="text" class="form-control" placeholder="Nom responsable" required/>
+            </div>
+            <div class="arrondissement form-group col-md-4 col-12">
+                <label class="">numero de télephone responsable :<span class="requis"> *</span></label>
+                <input [formControl]="numeroVendeurCtrl" type="phone" class="form-control" placeholder="numero de télephone responsable" required/>
+            </div>
+            <div class="departement form-group col-md-4 col-12">
+                <label class="">Address e-mail responsable:</label>
+                <input [formControl]="emailVendeurCtrl" type="email" class="form-control" placeholder="Address e-mail responsable"/>
+            </div>
+        </div>
+        <div class="row my-1">
+            <div class="region form-group col-md-4 col-12">
+                <label class="">Région :<span class="requis"> *</span></label>
+                <select class="form-select" [formControl]="regionVenteCtrl">
+                    <option *ngFor="let region of Regions; index as i" [value]="region.nom">{{region.nom}}</option>
+                </select>
+                <!-- <input [formControl]="regionVenteCtrl" type="text" class="form-control" placeholder="Région" required/> -->
+            </div>
+            <div class="departement form-group col-md-4 col-12">
+                <label class="">Département :<span class="requis"> *</span></label>
+                <select class="form-select" [formControl]="departementVenteCtrl">
+                    <option *ngFor="let departement of Regions[currentRegionIndex].departements; index as i" [value]="departement.nom">{{departement.nom}}</option>
+                </select>
+                <!-- <input [formControl]="departementVenteCtrl" type="text" class="form-control" placeholder="Département" required/> -->
+            </div>
+            <div class="arrondissement form-group col-md-4 col-12">
+                <label class="">Arrondissement :<span class="requis"> *</span></label>
+                <select class="form-select" [formControl]="arrondissementVenteCtrl">
+                    <option *ngFor="let arrondissement of Regions[currentRegionIndex].departements[currentDepartementIndex].arrondissements">{{arrondissement.nom}}</option></select>
+                <!-- <input [formControl]="arrondissementVenteCtrl" type="text" class="form-control" placeholder="Arrondissement" required/> -->
+            </div>
+        </div>
+        <div class="row my-1">
+            <div class="lieuDit form-group col-md-6 col-12">
+                <label class="">Lieu dit de la vente(exacte) :<span class="requis"> *</span></label>
+                <input [formControl]="lieuVenteCtrl" type="text" class="form-control" placeholder="Lieu dit" required/>
+            </div>
+            <div class="dateVente form-group col-md-6 col-12">
+                <label class="">Date de la vente :<span class="requis"> *</span></label>
+                <input [formControl]="dateVenteCtrl" type="date" class="form-control" required/>
+            </div>
+        </div>
+        <div class="quantite row mx-1 my-1 py-2">
+            <div *ngIf="typeProduitCtrl.value == 'cacao'" class="row">
+                <div class="volume form-group col-md-6 col-12">
+                    <label class="">Volume cacao grade 1<span class="requis">(en kilogramme) : *</span></label>
+                    <input [formControl]="volumeCacaoGrade1Ctrl" type="number" class="form-control" placeholder="Ex:35" required/>
+                </div>
+                <div class="robusta form-group col-md-6 col-12">
+                    <label class="">Prix cacao grade 1 <span class="requis">(en FCFA) : *</span></label>
+                    <input [formControl]="prixCacaoGrade1Ctrl" type="number" class="form-control" placeholder="Ex:35 000 000" required/>
+                </div>
+            </div>
+            <div *ngIf="typeProduitCtrl.value == 'cacao'" class="row mt-2">
+                <div class="volume form-group col-md-6 col-12">
+                    <label class="">Volume cacao grade 2<span class="requis">(en kilogramme) : *</span></label>
+                    <input [formControl]="volumeCacaoGrade2Ctrl" type="number" class="form-control" placeholder="Ex:35" required/>
+                </div>
+                <div class="robusta form-group col-md-6 col-12">
+                    <label class="">Prix cacao grade 2 <span class="requis">(en FCFA) : *</span></label>
+                    <input [formControl]="prixCacaoGrade2Ctrl" type="number" class="form-control" placeholder="Ex:35 000 000" required/>
+                </div>
+            </div>
+            <div *ngIf="typeProduitCtrl.value == 'cafeArabica'" class="row mt-2">
+                <div class="volume form-group col-md-6 col-12">
+                    <label class=""> Volume cafe Arabica <span class="requis">(en kilogramme) : *</span></label>
+                    <input [formControl]="volumeArabicaCtrl" type="number" class="form-control" placeholder="Ex:35" required/>
+                </div>
+                <div class="arabica form-group col-md-6 col-12">
+                    <label class="">Prix cafe Arabica <span class="requis">(en FCFA) : *</span></label>
+                    <input [formControl]="prixTotalCtrl" type="number" class="form-control" placeholder="Ex:35" required/>
+                </div>
+            </div>
+            <div *ngIf="typeProduitCtrl.value == 'cafeRobusta'" class="row mt-2">
+                <div class="volume form-group col-md-6 col-12">
+                    <label class=""> Volume cafe Robusta <span class="requis">(en kilogramme) : *</span></label>
+                    <input [formControl]="volumeArabicaCtrl" type="number" class="form-control" placeholder="Ex:35" required/>
+                </div>
+                <div class="arabica form-group col-md-6 col-12">
+                    <label class="">Prix cafe Robusta <span class="requis">(en FCFA) : *</span></label>
+                    <input [formControl]="prixTotalCtrl" type="number" class="form-control" placeholder="Ex:35" required/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="DetailProducteur d-flex flex-column">
+        <span class="titre mb-2">Liste de producteurs</span>
+        <div class="d-flex my-2 align-items-center justify-content-between ">
+            <div (click)="load('producteur')" class="d-flex flex-column charg text-center ">
+                <label for="">Charger la liste des producteurs (.xls, .ods, .xslx) </label>
+                <input id="producteurF" class="mx-2 prod" type="file" (change)="onFileSelected($event)" accept=".xlsx, .xls, .ods" />
+                <div class="border border-success rounded py-2 border-2 text-center">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#00a153"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 15C3 17.8284 3 19.2426 3.87868 20.1213C4.75736 21 6.17157 21 9 21H15C17.8284 21 19.2426 21 20.1213 20.1213C21 19.2426 21 17.8284 21 15" stroke="#00a153" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 3V16M12 16L16 11.625M12 16L8 11.625" stroke="#00a153" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                </div>
+                <span>{{fileProducteurName}}</span>
+            </div>
+            <div (click)="load('bordereau')" class="d-flex flex-column charg text-center ">
+                <label for="">Charger un bordereau (.jpeg, .pdf, .png) </label>
+                <input id="bord" class="mx-2 prod" type="file" (change)="onBordereauSelected($event)" accept=".jpeg, .pdf, .png, .jpg"/>
+                <div class="border border-success rounded py-2 border-2 text-center">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#00a153"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 15C3 17.8284 3 19.2426 3.87868 20.1213C4.75736 21 6.17157 21 9 21H15C17.8284 21 19.2426 21 20.1213 20.1213C21 19.2426 21 17.8284 21 15" stroke="#00a153" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 3V16M12 16L16 11.625M12 16L8 11.625" stroke="#00a153" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                </div>
+                <span>{{fileBordereauName}}</span>
+            </div>
+        </div>
+        <div *ngFor="let producteur of gestionService.producteurs; index as i" >
+            <app-produit [producteur]="producteur" [index]="i" ></app-produit><br/>
+        </div>
+        <div class="d-flex my-2 align-items-center">
+            <a id="add" (click)="ajouterProducteur()" class="mx-2 btn btn-success"><span>+ Ajouter un producteur</span></a>
+        </div>
+    </div>
+
+    <div class="OtherOptions d-flex flex-column my-4">
+        <!-- <div class="import d-flex flex-column">
+            <label class="">Importez un fichier :<span class="requis"> *</span></label>
+            <input type="file" class="form-control"  required/>
+        </div> -->
+        <div class="d-flex my-3">
+            <input type="checkbox" class="form-check" id="confirm" required/>
+            <label for="confirm" class="mx-2">Je confirme que les informations de ce formulaire sont exactes et peuvent être utilisées selon la charte du conseil interprofessionnel du Cacao et Café.</label> 
+        </div>
+        <div *ngIf="viewSubmit" class="d-flex options">
+            <button (click)="send()" class="btn-success btn">Soumettre le bordereau</button>
+            <button (click)="back()" class="btn-outline-danger btn mx-3">Annuler et quitter</button>
+        </div>
+    </div>
+</form>
+<app-popup></app-popup>
+<app-loading *ngIf="loading"></app-loading>

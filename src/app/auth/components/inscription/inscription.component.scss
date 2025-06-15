@@ -1,0 +1,134 @@
+@import "../../../../styles.scss";
+
+.contenant{
+    min-height: 100vh;
+    height: 100%;
+    .left{
+        background:linear-gradient(180deg, rgba(black, 0.3) 5%, rgba(black, 0.3) 60%), url("../../../../assets/images/inscription_bg.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        .logo{
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            position: fixed;
+            bottom: 0;
+            left: 45%;
+        }
+    }
+    .right{
+        background-color: rgba(237, 227, 227, 0.2);
+        z-index: 3;
+        .logo{
+            width: 6rem;
+            height: 6rem;
+            border-radius: 50%;
+        }
+        .title{
+            font-weight: bold;
+            color: $primary_brown;
+        }
+        .formulaire{
+            z-index: 3;
+            // background-color: rgba(237, 227, 227, 0.2);
+            min-width:80% ;
+            border-radius: 0.5rem;
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+            border-bottom: solid 0.3rem $primary_green;
+            // box-shadow: 2px 2px 2px 2px silver;
+            label, .new{
+                font-size: smaller;
+                .requis{
+                    color:red;
+                    font-weight: 700;
+                }
+            }
+            input{
+                font-size: smaller;
+            }
+            .creation_compte{
+                font-size: smaller;
+                font-weight: 500;
+                color: $primary_green;
+                cursor: pointer;
+                &:hover{
+                    font-weight: 700;
+                }
+            }
+            .submit{
+                background-color: rgba($primary_green, 0.9);
+                color: white;
+                font-weight: 600;
+                font-size: smaller;
+                &:hover{
+                    background-color: $primary_green;
+                    font-weight: 700;
+                }
+            }
+        }
+        .formOtp{
+            z-index: 3;
+            background-color: rgba(237, 227, 227, 0.2);
+            min-width:80% ;
+            border-radius: 0.5rem;
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+            border-bottom: solid 0.3rem $primary_green;
+            box-shadow: 2px 2px 2px 2px silver;
+            label{
+                font-size: smaller;
+                font-weight: 500;
+                .requis{
+                    color:red;
+                    font-weight: 700;
+                }
+            }
+            .otpNot{
+                font-size: smaller;
+                color: $primary_green;
+                cursor: pointer;
+                &:hover{
+                    font-weight: 600;
+                }
+            }
+            .decompte{
+                font-weight: 500;
+                color: $primary_green;
+                cursor: pointer;
+                &:hover{
+                    font-weight: 600;
+                }
+            }
+            input{
+                text-align: center;
+                border: solid 1px rgba($primary_green, 0.8);
+                border-radius: 3px;
+            }
+            button{
+                font-size: small;
+                width: 8rem;
+                background-color: rgba($primary_green, 0.9);
+                color: white;
+                border-radius: 0.2rem;
+                border:none;
+                &:hover{
+                    background-color: $primary_green;
+                }
+            }
+        }
+    }
+}
+.load{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100vh;
+    background: rgba(128, 128, 128, 0.274);
+    img{
+        width: 10rem;
+    }
+}

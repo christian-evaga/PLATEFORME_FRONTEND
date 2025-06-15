@@ -1,0 +1,111 @@
+@import "../../../../styles.scss";
+
+section{
+    height: 100%;
+    .fillAriane{
+        font-size: small;
+        color: $primary_green;
+        .accueil{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+    .content{
+        height: 100%;
+        min-height: 85vh;
+        background-color: white;
+    .titlePage{
+        color: $primary_brown;
+        font-size: small;
+    }
+    .infoBord{
+        .numeroBord{
+            font-weight: bolder;
+        }
+        .motif{
+            font-size: small;
+            background-color: rgba($primary_red, 0.2);
+            border-radius: 0.2rem;
+            .spec{
+                color: $primary_red;
+                text-decoration: underline;
+                font-weight: 500;
+            }
+        }
+        .statutV{
+            font-size: smaller;
+            font-weight: 500;
+            color: $primary_green;
+            background-color: rgba($primary_green, 0.2);
+            width: 5rem;
+            border-radius: 0.8rem;
+        }
+        .statutR{
+            font-size: smaller;
+            font-weight: 500;
+            color: $primary_red;
+            background-color: rgba($primary_red, 0.2);
+            width: 5rem;
+            border-radius: 0.8rem;
+        }
+        .typeProd{
+            font-weight: 500;
+        }
+        .svg{
+            height: 2rem;
+            width: 2rem;
+            border-radius: 50%;
+        }
+        .tvc{background-color: rgba($primary_brown, 0.1);}
+        .tvca{background-color: $secondary_smoke;}
+    }
+    .infoAcheteur, .infoVente, .detailsProd{
+        .title{font-weight: 500;}
+        .label{
+            font-size: small;
+            .profil{font-weight: 500; }}
+    }
+    .options{
+        button{
+            background-color: rgba($primary_green, 0.9);
+            border: none;
+            color: white;
+            font-size: small;
+            border-radius: 0.2rem;
+            &:hover{
+                background-color: $primary_green;
+            }
+        }
+        .retour{
+            cursor: pointer;
+            font-size: small;
+            color: rgba($primary_green, 0.9);
+            font-weight: 500;
+            &:hover{
+                color: $primary_green;
+            }
+        }
+    }
+    .optionsR{
+        button{
+            background-color: rgba($primary_red, 0.9);
+            border: none;
+            color: white;
+            font-size: small;
+            border-radius: 0.2rem;
+            &:hover{
+                background-color: $primary_red;
+            }
+        }
+        .retour{
+            cursor: pointer;
+            font-size: small;
+            color: rgba($primary_red, 0.9);
+            font-weight: 500;
+            &:hover{
+                color: $primary_red;
+            }
+        }
+    }
+    }
+}

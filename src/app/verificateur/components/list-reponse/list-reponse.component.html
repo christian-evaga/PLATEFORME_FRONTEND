@@ -1,0 +1,123 @@
+<section class="content d-flex flex-column bg-white p-4">
+    <p class="fillAriane mb-2"><a (click)="goToHome()">Accueil </a> -> Liste bordereau</p>
+    <div class="d-flex flex-culums justify-content-between">
+        <div class="d-block">
+            <h5 class="title mb-3">Liste des reponses : <span class="prec"> ({{ requetes.length }})</span></h5>
+        </div>
+    </div>
+    <!-- <div class="filtre d-flex align-items-center p-2 mt-3">
+        <label>Statut :</label>
+        <select class="form-select px-3 mx-2">
+            <option>En attente</option>
+            <option>Accepté</option>
+            <option>Refusé</option>
+        </select>
+    </div> -->
+    <div class="resultContent d-flex flex-column mt-1 p-2">
+        
+        <p-table class="" styleClass="p-datatable-striped"  
+         #dt1
+         [paginator]="true"
+         [rows]="10"
+         [showCurrentPageReport]="true"
+         [rowsPerPageOptions]="[5, 10, 20, 25, 50, 100]"
+         sortMode="multiple"
+         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+         [globalFilterFields]="[cols[0].field, cols[1].field, cols[2].field, cols[3].field]"
+         [columns]="cols" 
+         [value]="requetes" 
+         [tableStyle]="{ 'min-width': '64.5rem' }"
+         >
+
+         <ng-template class="border" pTemplate="caption">
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                <div class="d-flex justify-content-between">
+                    <span class="d-flex justify-content-evenly align-items-center">
+                        <i class="pi pi-search m-1 img-search"></i>
+                        <input class="search m-1 form-control" type="text" (input)="filter(dt1, $event)" placeholder="   Rechercher" />
+                    </span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <button pButton label="Clear" class="p-button-outlined clear m-1" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                </div>
+            </div>
+            </ng-template>
+        
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                        <div class="d-flex entete align-items-center justify-content-evenly">
+                            <p-sortIcon class="m-1" [field]="col.header" />
+                            {{ col.header }} 
+                            <p-columnFilter type="text" [field]="col.field" display="menu"/>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="d-flex entete align-items-center justify-content-evenly">
+                            Action
+                        </div>
+                    </th>
+                </tr>
+            </ng-template>
+            
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr (click)="verifierRequete(rowData)" class="rows border element">
+                    <td class="py-2 text-center">
+                        {{ rowData['idBordereau'] }}
+                    </td>
+                    <td class="py-2 text-center">
+                        {{ rowData['dateDeSoumission'] | date: 'medium' }}
+                    </td>
+                    <td class="py-2 text-center">
+                        {{ rowData['producteurList'].length }}
+                    </td>
+                    <td class="py-2 text-center">
+                        {{ rowData['statut'] }}
+                    </td>
+                    <td class="py-2 text-center">
+                        <button class="btn btn-outline-success" (click)="verifierRequete(rowData)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Voir</button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>    
+    </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Bordereau : ({{ currentRequest.idBordereau }}) <span class="p-2 bg-info">{{ currentRequest.dateDeSoumission | date: 'medium' }} </span></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="col-12 my-4">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th>Nom producteur</th>
+                            <th>Numéro producteur</th>
+                            <th>Lieu de production</th>
+                            <th>Géometrie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let producteur of currentRequest.producteurList">
+                            <td>{{ producteur.nom }}</td>
+                            <td>{{ producteur.phone }}</td>
+                            <td>{{ producteur.lieuDit }}</td>
+                            <td *ngIf="producteur.geometrie != ''">{{ producteur.geometrie }}</td>
+                            <td *ngIf="producteur.geometrie == ''">données absente</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <!-- <button type="button" class="btn btn-primary">Répondre</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

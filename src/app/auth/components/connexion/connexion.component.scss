@@ -1,0 +1,91 @@
+@import "../../../../styles.scss";
+
+.contenant{
+    min-height: 100vh;
+    height: 100%;
+    .left{
+        background:linear-gradient(180deg, rgba(black, 0.3) 5%, rgba(black, 0.3) 60%), url("../../../../assets/images/connexion_bg.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        .logo{
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            position: fixed;
+            bottom: 0;
+            left: 45%;
+        }
+    }
+    .right{
+        background-color: rgba(237, 227, 227, 0.2);
+        z-index: 3;
+        .logo{
+            width: 7rem;
+            height: 7rem;
+            border-radius: 50%;
+        }
+        .title{
+            font-weight: bold;
+            color: $primary_brown;
+        }
+        .isVerif{
+            position: fixed;
+            top: 3%;
+            right: 2%;
+            color: rgba($primary_green, 0.9);
+            text-decoration: underline;
+        }
+        .formulaire{
+            z-index: 3;
+            // background-color: rgba(237, 227, 227, 0.2);
+            min-width:70% ;
+            border-radius: 0.5rem;
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+            border-bottom: solid 0.3rem $primary_green;
+            // box-shadow: 2px 2px 2px 2px silver;
+            label, .new{
+                font-size: smaller;
+                .requis{
+                    color:red;
+                    font-weight: 700;
+                }
+            }
+            input{
+                font-size: smaller;
+            }
+            .forget_pass, .creation_compte{
+                font-size: smaller;
+                font-weight: 500;
+                color: $primary_green;
+                cursor: pointer;
+                &:hover{
+                    font-weight: 700;
+                }
+            }
+            .submit{
+                background-color: rgba($primary_green, 0.9);
+                color: white;
+                font-weight: 600;
+                font-size: smaller;
+                &:hover{
+                    background-color: $primary_green;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}
+.load{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100vh;
+    background: rgba(128, 128, 128, 0.274);
+    img{
+        width: 10rem;
+    }
+}

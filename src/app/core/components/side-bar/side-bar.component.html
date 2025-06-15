@@ -1,0 +1,105 @@
+<div class="sideBar d-flex flex-column px-1">
+    <div class="d-flex text-center align-items-center justify-content-center">
+        <div class="d-flex flex-column align-items-center justify-content-center">
+            <img src="logo_fb.jpg" width="80" alt="Logo" class="logo text-center"/>
+        </div>
+        <!-- <div class="d-none d-lg-flex">
+            <h5 *ngIf="userService.currentUser.role != 'system' && userService.currentUser.role != 'admin'">{{authService.typeUser | titlecase}}</h5>
+            <h5 *ngIf="userService.currentUser.role == 'admin'">Admin</h5>
+            <h5 *ngIf="userService.currentUser.role == 'system'">Admin SI</h5>
+        </div> -->
+    </div>
+    <div *ngIf="authService.typeUser == 'exportateur' && userService.currentUser.role == 'admin'" class="d-flex flex-column">
+        <a  id="admin" routerLinkActive="active" routerLink="/gestion/admin"
+        class="d-flex flex-wrap p-2 active">
+            <svg class="mx-3" width="20" height="20" fill="#00a153" viewBox="0 0 256 256" id="Flat" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="2"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M228,128A100,100,0,1,0,60.71,201.90967a3.97048,3.97048,0,0,0,.842.751,99.79378,99.79378,0,0,0,132.8982-.00195,3.96558,3.96558,0,0,0,.83813-.74756A99.76267,99.76267,0,0,0,228,128ZM36,128a92,92,0,1,1,157.17139,64.87207,75.616,75.616,0,0,0-44.50782-34.04053,44,44,0,1,0-41.32714,0,75.61784,75.61784,0,0,0-44.50782,34.04A91.70755,91.70755,0,0,1,36,128Zm92,28a36,36,0,1,1,36-36A36.04061,36.04061,0,0,1,128,156ZM68.86475,198.417a68.01092,68.01092,0,0,1,118.27.00049,91.80393,91.80393,0,0,1-118.27-.00049Z"></path> </g></svg>
+            <div class="d-flex align-items-center">
+                <span>Admin</span>
+                <svg class="mx-3" id="fleche"  height="20" width="20" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" fill="#FFFFF"></path> </g></svg>
+            </div>
+        </a>
+        <div id="sousOption" class="view mx-2">
+            <a routerLinkActive="active2" routerLink="/gestion/admin"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="d-flex p-2 ">
+                <span>Users</span>
+            </a>
+            <a (click)="setActive()" routerLinkActive="active2" routerLink="/gestion/admin/reponses-recues"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="d-flex p-2 ">
+                <span>Reponses reçus</span>
+            </a>
+        </div>
+        <hr>
+    </div>
+    <!-- Menu exportateur -->
+    <div *ngIf="authService.typeUser == 'exportateur' && userService.currentUser.role == 'user'" class="menu-responsable d-flex flex-column">
+        <a (click)="closeOptionAdmin()" routerLinkActive="active" routerLink="/gestion/"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="d-flex flex-wrap p-2 align-items-center">
+        <svg class="mx-3" width="20" height="20" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css"> .st0{fill:none;stroke:#00a153;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} .st1{fill:none;stroke:#00a153;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;} </style> <ellipse class="st0" cx="16" cy="8" rx="10" ry="5"></ellipse> <path class="st0" d="M6,8v8c0,2.8,4.5,5,10,5c5.5,0,10-2.2,10-5V8"></path> <path class="st0" d="M6,16v8c0,2.8,4.5,5,10,5c5.5,0,10-2.2,10-5v-8"></path> </g></svg>
+        <span>Dashboard</span>
+        </a>
+        <a (click)="closeOptionAdmin()" routerLinkActive="active" routerLink="/gestion/bordereaux"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="d-flex flex-wrap p-2 ">
+        <svg class="mx-3" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M13 3H8.2C7.0799 3 6.51984 3 6.09202 3.21799C5.71569 3.40973 5.40973 3.71569 5.21799 4.09202C5 4.51984 5 5.0799 5 6.2V17.8C5 18.9201 5 19.4802 5.21799 19.908C5.40973 20.2843 5.71569 20.5903 6.09202 20.782C6.51984 21 7.0799 21 8.2 21H10M13 3L19 9M13 3V7.4C13 7.96005 13 8.24008 13.109 8.45399C13.2049 8.64215 13.3578 8.79513 13.546 8.89101C13.7599 9 14.0399 9 14.6 9H19M19 9V10M9 17H11.5M9 13H14M9 9H10M14 21L16.025 20.595C16.2015 20.5597 16.2898 20.542 16.3721 20.5097C16.4452 20.4811 16.5147 20.4439 16.579 20.399C16.6516 20.3484 16.7152 20.2848 16.8426 20.1574L21 16C21.5523 15.4477 21.5523 14.5523 21 14C20.4477 13.4477 19.5523 13.4477 19 14L14.8426 18.1574C14.7152 18.2848 14.6516 18.3484 14.601 18.421C14.5561 18.4853 14.5189 18.5548 14.4903 18.6279C14.458 18.7102 14.4403 18.7985 14.405 18.975L14 21Z" stroke="#00a153" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+        <span>Bordereaux</span>
+        </a>
+        <a (click)="closeOptionAdmin()" routerLinkActive="active" routerLink="/gestion/reponses"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="d-flex flex-wrap p-2 ">
+        <svg class="mx-3" width="20" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#00a153" stroke-width="2"><g id="SVGRepo_bgCarrier" stroke-width="2"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="2"></g><g id="SVGRepo_iconCarrier"> <path d="M10 29V26H13V29H10Z" fill="#ffffff"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M32 44H8C5.79086 44 4 42.2091 4 40V8C4 5.79086 5.79086 4 8 4H32C34.2091 4 36 5.79086 36 8V40C36 42.2091 34.2091 44 32 44ZM18 13C18 12.4477 18.4477 12 19 12H31C31.5523 12 32 12.4477 32 13C32 13.5523 31.5523 14 31 14H19C18.4477 14 18 13.5523 18 13ZM19 16C18.4477 16 18 16.4477 18 17C18 17.5523 18.4477 18 19 18H31C31.5523 18 32 17.5523 32 17C32 16.4477 31.5523 16 31 16H19ZM15.7071 12.2929C16.0976 12.6834 16.0976 13.3166 15.7071 13.7071L11 18.4142L8.29289 15.7071C7.90237 15.3166 7.90237 14.6834 8.29289 14.2929C8.68342 13.9024 9.31658 13.9024 9.70711 14.2929L11 15.5858L14.2929 12.2929C14.6834 11.9024 15.3166 11.9024 15.7071 12.2929ZM19 24C18.4477 24 18 24.4477 18 25C18 25.5523 18.4477 26 19 26H31C31.5523 26 32 25.5523 32 25C32 24.4477 31.5523 24 31 24H19ZM18 29C18 28.4477 18.4477 28 19 28H31C31.5523 28 32 28.4477 32 29C32 29.5523 31.5523 30 31 30H19C18.4477 30 18 29.5523 18 29ZM14 24H9C8.44772 24 8 24.4477 8 25V30C8 30.5523 8.44772 31 9 31H14C14.5523 31 15 30.5523 15 30V25C15 24.4477 14.5523 24 14 24Z" fill="#ffffff"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M44 40L41 44L38 40V22H44V40Z" fill="#ffffff"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M40 15H42C43.1046 15 44 15.8954 44 17V21H38V17C38 15.8954 38.8954 15 40 15Z" fill="#ffffff"></path> </g></svg>
+        <span>Réponses</span>
+        </a>
+        <hr>
+    </div>
+    <!-- Menu verificateur -->
+    <div *ngIf="authService.typeUser == 'verificateur'" class="menu-verificateur d-flex flex-column">
+        <a routerLinkActive="active" routerLink="/verificateur/"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="d-flex flex-wrap p-2 align-items-center">
+        <svg class="mx-3" width="20" height="20" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css"> .st0{fill:none;stroke:#00a153;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} .st1{fill:none;stroke:#00a153;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;} </style> <ellipse class="st0" cx="16" cy="8" rx="10" ry="5"></ellipse> <path class="st0" d="M6,8v8c0,2.8,4.5,5,10,5c5.5,0,10-2.2,10-5V8"></path> <path class="st0" d="M6,16v8c0,2.8,4.5,5,10,5c5.5,0,10-2.2,10-5v-8"></path> </g></svg>
+        <span>Home verificateur</span>
+        </a>
+        <a routerLinkActive="active" routerLink="/verificateur/list/"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="d-flex flex-wrap p-2 align-items-center">
+        <svg class="mx-3" width="20" height="20" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css"> .st0{fill:none;stroke:#00a153;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} .st1{fill:none;stroke:#00a153;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;} </style> <ellipse class="st0" cx="16" cy="8" rx="10" ry="5"></ellipse> <path class="st0" d="M6,8v8c0,2.8,4.5,5,10,5c5.5,0,10-2.2,10-5V8"></path> <path class="st0" d="M6,16v8c0,2.8,4.5,5,10,5c5.5,0,10-2.2,10-5v-8"></path> </g></svg>
+        <span>Liste bordereau</span>
+        </a>
+        <a routerLinkActive="active" routerLink="/verificateur/histo/"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="d-flex flex-wrap p-2 align-items-center">
+        <svg class="mx-3" width="20" height="20" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css"> .st0{fill:none;stroke:#00a153;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} .st1{fill:none;stroke:#00a153;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;} </style> <ellipse class="st0" cx="16" cy="8" rx="10" ry="5"></ellipse> <path class="st0" d="M6,8v8c0,2.8,4.5,5,10,5c5.5,0,10-2.2,10-5V8"></path> <path class="st0" d="M6,16v8c0,2.8,4.5,5,10,5c5.5,0,10-2.2,10-5v-8"></path> </g></svg>
+        <span>Historique</span>
+        </a>
+    </div>
+     <!-- Menu admin systeme -->
+     <div *ngIf="authService.typeUser == 'exportateur' && userService.currentUser.role == 'system'" class="menu-admin d-flex flex-column">
+        <a routerLinkActive="active" routerLink="/verificateur/home-si"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="d-flex flex-wrap p-2 align-items-center">
+        <svg class="mx-3" width="20" height="20" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css"> .st0{fill:none;stroke:#00a153;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} .st1{fill:none;stroke:#00a153;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;} </style> <ellipse class="st0" cx="16" cy="8" rx="10" ry="5"></ellipse> <path class="st0" d="M6,8v8c0,2.8,4.5,5,10,5c5.5,0,10-2.2,10-5V8"></path> <path class="st0" d="M6,16v8c0,2.8,4.5,5,10,5c5.5,0,10-2.2,10-5v-8"></path> </g></svg>
+        <span>Home</span>
+        </a>
+        <a routerLinkActive="active" routerLink="/verificateur/data"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="d-flex flex-wrap p-2 align-items-center">
+        <svg class="mx-3" width="20" height="20" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css"> .st0{fill:none;stroke:#00a153;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} .st1{fill:none;stroke:#00a153;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;} </style> <ellipse class="st0" cx="16" cy="8" rx="10" ry="5"></ellipse> <path class="st0" d="M6,8v8c0,2.8,4.5,5,10,5c5.5,0,10-2.2,10-5V8"></path> <path class="st0" d="M6,16v8c0,2.8,4.5,5,10,5c5.5,0,10-2.2,10-5v-8"></path> </g></svg>
+        <span>Repertoire</span>
+        </a>
+        <a routerLinkActive="active" routerLink="/verificateur/list-requete"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="d-flex flex-wrap p-2 align-items-center">
+        <svg class="mx-3" width="20" height="20" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css"> .st0{fill:none;stroke:#00a153;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} .st1{fill:none;stroke:#00a153;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;} </style> <ellipse class="st0" cx="16" cy="8" rx="10" ry="5"></ellipse> <path class="st0" d="M6,8v8c0,2.8,4.5,5,10,5c5.5,0,10-2.2,10-5V8"></path> <path class="st0" d="M6,16v8c0,2.8,4.5,5,10,5c5.5,0,10-2.2,10-5v-8"></path> </g></svg>
+        <span>Liste requete</span>
+        </a>
+        <a routerLinkActive="active" routerLink="/verificateur/list-reponse"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="d-flex flex-wrap p-2 align-items-center">
+        <svg class="mx-3" width="20" height="20" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css"> .st0{fill:none;stroke:#00a153;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} .st1{fill:none;stroke:#00a153;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;} </style> <ellipse class="st0" cx="16" cy="8" rx="10" ry="5"></ellipse> <path class="st0" d="M6,8v8c0,2.8,4.5,5,10,5c5.5,0,10-2.2,10-5V8"></path> <path class="st0" d="M6,16v8c0,2.8,4.5,5,10,5c5.5,0,10-2.2,10-5v-8"></path> </g></svg>
+        <span>Liste reponse</span>
+        </a>
+    </div>
+</div>

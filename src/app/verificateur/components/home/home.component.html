@@ -1,0 +1,129 @@
+<section class="content d-flex flex-column">
+    <span class="fillAriane mb-2">Accueil</span>
+    <div class="row">
+        <div class="col-md-3 col-6 p-3">
+            <div class="carte p-4 bg-white">
+                <div class="d-flex justify-content-between mb-4">
+                    <div class="svg tb p-1 text-center">
+                        <svg width="20" height="20" fill="#1f62a6" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 508 508" xml:space="preserve" stroke="#1f62a6"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M429.25,0h-281.6c-22.5,0-40.8,18.3-40.8,40.8v28h-28c-22.5,0-40.8,18.3-40.8,40.8v279.3c0,10.9,4.2,21.1,11.9,28.8 l78.4,78.4c7.7,7.7,17.9,11.9,28.8,11.9h203.2c22.5,0,40.8-18.3,40.8-40.8v-28h28c22.5,0,40.8-18.3,40.8-40.8V40.8 C469.95,18.3,451.65,0,429.25,0z M132.25,459.9L86.35,414h45.9V459.9z M372.95,467.2c0,6.9-5.6,12.5-12.5,12.5h-200.1v-79.9 c0-7.8-6.3-14.1-14.1-14.1h-79.9V109.5c0-6.9,5.6-12.5,12.5-12.5h281.6c6.9,0,12.5,5.6,12.5,12.5V467.2z M429.25,411h-28V109.5 c0-22.5-18.3-40.8-40.8-40.8h-225.3v-28c0-6.9,5.6-12.5,12.5-12.5h281.5c6.9,0,12.5,5.6,12.5,12.5v357.8h0.1 C441.75,405.4,436.15,411,429.25,411z"></path> </g> </g> <g> <g> <path d="M333.85,129.8h-121.7c-7.8,0-14.1,6.3-14.1,14.1c0,7.8,6.3,14.1,14.1,14.1h121.6c7.8,0,14.1-6.3,14.1-14.1 C347.95,136.1,341.55,129.8,333.85,129.8z"></path> </g> </g> <g> <g> <path d="M333.85,202h-121.7c-7.8,0-14.1,6.3-14.1,14.1c0,7.8,6.3,14.1,14.1,14.1h121.6c7.8,0,14.1-6.3,14.1-14.1 C347.85,208.3,341.55,202,333.85,202z"></path> </g> </g> <g> <g> <path d="M333.85,274.3h-121.7c-7.8,0-14.1,6.3-14.1,14.1s6.3,14.1,14.1,14.1h121.6c7.8,0,14.1-6.3,14.1-14.1 C347.95,280.6,341.55,274.3,333.85,274.3z"></path> </g> </g> <g> <g> <path d="M333.85,346.5h-121.7c-7.8,0-14.1,6.3-14.1,14.1s6.3,14.1,14.1,14.1h121.6c7.8,0,14.1-6.3,14.1-14.1 C347.95,352.8,341.55,346.5,333.85,346.5z"></path> </g> </g> <g> <g> <path d="M333.85,418.7h-121.7c-7.8,0-14.1,6.3-14.1,14.1s6.3,14.1,14.1,14.1h121.6c7.8,0,14.1-6.3,14.1-14.1 C347.95,425.1,341.55,418.7,333.85,418.7z"></path> </g> </g> <g> <g> <path d="M161.95,122.1h-56.4c-7.8,0-14.1,6.3-14.1,14.1v56.5c0,7.8,6.3,14.1,14.1,14.1h56.4c7.8,0,14.1-6.3,14.1-14.1v-56.5 C176.05,128.4,169.75,122.1,161.95,122.1z M147.85,178.5h-28.2v-28.2h28.2V178.5z"></path> </g> </g> <g> <g> <path d="M161.95,228.7h-56.4c-7.8,0-14.1,6.3-14.1,14.1v56.4c0,7.8,6.3,14.1,14.1,14.1h56.4c7.8,0,14.1-6.3,14.1-14.1v-56.4 C176.05,235,169.75,228.7,161.95,228.7z M147.85,285.1h-28.2v-28.2h28.2V285.1z"></path> </g> </g> </g></svg>
+                    </div>
+                    <span class="title">TOTAL BORDEREAUX</span>
+                </div>
+                <span class="number align-self-end">{{bordereaux.length + bordereauxAccept.length + bordereauxReject.length}}</span>
+            </div>
+        </div>
+        <div class="col-md-3 col-6 p-3">
+            <div class="carte p-4 bg-white">
+                <div class="d-flex justify-content-between mb-4">
+                    <div class="svg tb p-1 text-center">
+                        <svg width="20" height="20" fill="#e45b0d" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 508 508" xml:space="preserve" stroke="#e45b0d"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M429.25,0h-281.6c-22.5,0-40.8,18.3-40.8,40.8v28h-28c-22.5,0-40.8,18.3-40.8,40.8v279.3c0,10.9,4.2,21.1,11.9,28.8 l78.4,78.4c7.7,7.7,17.9,11.9,28.8,11.9h203.2c22.5,0,40.8-18.3,40.8-40.8v-28h28c22.5,0,40.8-18.3,40.8-40.8V40.8 C469.95,18.3,451.65,0,429.25,0z M132.25,459.9L86.35,414h45.9V459.9z M372.95,467.2c0,6.9-5.6,12.5-12.5,12.5h-200.1v-79.9 c0-7.8-6.3-14.1-14.1-14.1h-79.9V109.5c0-6.9,5.6-12.5,12.5-12.5h281.6c6.9,0,12.5,5.6,12.5,12.5V467.2z M429.25,411h-28V109.5 c0-22.5-18.3-40.8-40.8-40.8h-225.3v-28c0-6.9,5.6-12.5,12.5-12.5h281.5c6.9,0,12.5,5.6,12.5,12.5v357.8h0.1 C441.75,405.4,436.15,411,429.25,411z"></path> </g> </g> <g> <g> <path d="M333.85,129.8h-121.7c-7.8,0-14.1,6.3-14.1,14.1c0,7.8,6.3,14.1,14.1,14.1h121.6c7.8,0,14.1-6.3,14.1-14.1 C347.95,136.1,341.55,129.8,333.85,129.8z"></path> </g> </g> <g> <g> <path d="M333.85,202h-121.7c-7.8,0-14.1,6.3-14.1,14.1c0,7.8,6.3,14.1,14.1,14.1h121.6c7.8,0,14.1-6.3,14.1-14.1 C347.85,208.3,341.55,202,333.85,202z"></path> </g> </g> <g> <g> <path d="M333.85,274.3h-121.7c-7.8,0-14.1,6.3-14.1,14.1s6.3,14.1,14.1,14.1h121.6c7.8,0,14.1-6.3,14.1-14.1 C347.95,280.6,341.55,274.3,333.85,274.3z"></path> </g> </g> <g> <g> <path d="M333.85,346.5h-121.7c-7.8,0-14.1,6.3-14.1,14.1s6.3,14.1,14.1,14.1h121.6c7.8,0,14.1-6.3,14.1-14.1 C347.95,352.8,341.55,346.5,333.85,346.5z"></path> </g> </g> <g> <g> <path d="M333.85,418.7h-121.7c-7.8,0-14.1,6.3-14.1,14.1s6.3,14.1,14.1,14.1h121.6c7.8,0,14.1-6.3,14.1-14.1 C347.95,425.1,341.55,418.7,333.85,418.7z"></path> </g> </g> <g> <g> <path d="M161.95,122.1h-56.4c-7.8,0-14.1,6.3-14.1,14.1v56.5c0,7.8,6.3,14.1,14.1,14.1h56.4c7.8,0,14.1-6.3,14.1-14.1v-56.5 C176.05,128.4,169.75,122.1,161.95,122.1z M147.85,178.5h-28.2v-28.2h28.2V178.5z"></path> </g> </g> <g> <g> <path d="M161.95,228.7h-56.4c-7.8,0-14.1,6.3-14.1,14.1v56.4c0,7.8,6.3,14.1,14.1,14.1h56.4c7.8,0,14.1-6.3,14.1-14.1v-56.4 C176.05,235,169.75,228.7,161.95,228.7z M147.85,285.1h-28.2v-28.2h28.2V285.1z"></path> </g> </g> </g></svg>
+                    </div>
+                    <span class="title">BORDEREAUX EN ATTENTE</span>
+                </div>
+                <span class="number align-self-end">{{bordereaux.length}}</span>
+            </div>
+        </div>
+        <div class="col-md-3 col-6 p-3">
+            <div class="carte p-4 bg-white">
+                <div class="d-flex justify-content-between mb-4">
+                    <div class="svg tv p-1 text-center">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#00a153"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M1.5 12.5L5.57574 16.5757C5.81005 16.8101 6.18995 16.8101 6.42426 16.5757L9 14" stroke="#00a153" stroke-width="1.5" stroke-linecap="round"></path> <path d="M16 7L12 11" stroke="#00a153" stroke-width="1.5" stroke-linecap="round"></path> <path d="M7 12L11.5757 16.5757C11.8101 16.8101 12.1899 16.8101 12.4243 16.5757L22 7" stroke="#00a153" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>
+                    </div>
+                    <span class="title">TOTAL VALIDES</span>
+                </div>
+                <span class="number align-self-end">{{bordereauxAccept.length}}</span>
+            </div>
+        </div>
+        <div class="col-md-3 col-6 p-3">
+            <div class="carte p-4 bg-white">
+                <div class="d-flex justify-content-between mb-4">
+                    <div class="svg tinv p-1 text-center">    
+                        <svg width="20" height="20" fill="#df3545" viewBox="-3.5 0 19 19" xmlns="http://www.w3.org/2000/svg" class="cf-icon-svg" stroke="#df3545"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M11.383 13.644A1.03 1.03 0 0 1 9.928 15.1L6 11.172 2.072 15.1a1.03 1.03 0 1 1-1.455-1.456l3.928-3.928L.617 5.79a1.03 1.03 0 1 1 1.455-1.456L6 8.261l3.928-3.928a1.03 1.03 0 0 1 1.455 1.456L7.455 9.716z"></path></g></svg>
+                    </div>
+                    <span class="title">TOTAL INVALIDES</span>
+                </div>
+                <span class="number align-self-end">{{bordereauxReject.length}}</span>
+            </div>
+        </div>
+        <!-- <div class="col-md-3 col-6 p-3">
+            <div class="carte p-4 bg-white">
+                <div class="d-flex justify-content-between mb-4">
+                    <div class="tvc svg tb p-1 text-center">
+                        <svg width="20" height="20" fill="#932e24" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 570.277 570.277" xml:space="preserve" stroke="#932e24"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M528.279,262.465c-25.701-34.9-70.4-52.6-110.201-66.1c-39.799-13.5-96.1-28.8-138.3-19.6c2.4-59.4-19-110.8-98.5-100.4 c-5.5,0.6-8.6,4.3-10.4,8.6c-86.3,51.4-136.5,164-161,257c-14.7,55.1-25.7,170.2,64.9,151.2c74.1-15.3,122.4-84.5,155.4-153 c52.6,20.8,107.101,36.7,161.601,49.6c46.5,10.4,113.199,26.9,157.299,0C598.078,359.764,549.677,291.165,528.279,262.465z M386.279,211.665c42.199,9.8,84.5,26.9,116.299,56.9c20.201,18.399,39.801,48.3,41,72.199c-33.699-20.2-75.9-31.2-112.6-44.1 c-53.199-19-108.301-36.7-164-46.5h-0.6c5.5-17.7,9.8-36.7,12.2-55.7C313.478,204.265,350.779,203.065,386.279,211.665z M38.678,463.764c-29.4-25.7-2.4-123,5.5-149.3c23.9-76.5,67.3-167.1,135.3-215.399c0.6,0,1.8,0,2.4,0c26.3-3.1,44.1,1.8,55.7,12.2 c-4.9,0-9.8,2.4-11,8c-26.3,123-107.1,250.9-187.3,343.299C39.278,463.165,39.278,463.764,38.678,463.764z M228.378,282.665 c-29.4,74.7-74.1,155.399-153.6,183.599c-10.4,3.7-19,4.3-25.7,2.4c2.4,0,4.9-0.601,7.3-2.4c50.2-38.6,85.1-102.8,116.3-156.7 c32.4-55.699,67.3-119.999,76.5-184.799C269.978,165.165,246.178,239.765,228.378,282.665z M502.578,378.064 c-88.699,8-182.4-27.5-266.8-50.8c8.6-19.6,16.5-38.6,23.3-56.299c1.2-3.7,2.4-7.3,3.7-11c0.6,0,0.6,0.6,1.2,0.6 c49.6,15.9,97.9,32.399,146.301,51.399c41,16.5,84.5,40.4,127.898,49.6C531.978,370.764,520.978,376.264,502.578,378.064z"></path> </g> </g></svg>
+                    </div>
+                    <span class="title">TOTAL CACAO(KG)</span>
+                </div>
+                <span class="number align-self-end">100</span>
+            </div>
+        </div> -->
+    </div>
+
+    <div class="listeBordereaux d-flex flex-column mt-4">
+        <div class="d-flex flex-column">
+            <span class="title">Derniers bordereaux <span class="prec"> ({{ bordereaux.length }})</span></span>
+        </div>
+        <div class="resultContent d-flex flex-column mt-1">
+        
+            <p-table class="" styleClass="p-datatable-striped"  
+             #dt1
+             [paginator]="true"
+             [rows]="10"
+             [showCurrentPageReport]="true"
+             [rowsPerPageOptions]="[5, 10, 20, 25, 50, 100]"
+             sortMode="multiple"
+             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+             [globalFilterFields]="[cols[0].field, cols[1].field, cols[2].field, cols[3].field, cols[4].field, cols[5].field, cols[6].field]"
+             [columns]="cols" 
+             [value]="bordereaux" 
+             [tableStyle]="{ 'min-width': '64.5rem' }"
+             >
+    
+             <ng-template class="border" pTemplate="caption">
+                <div class="d-flex justify-content-between align-items-center flex-wrap">
+                    <div class="d-flex justify-content-between">
+                        <span class="d-flex justify-content-evenly align-items-center">
+                            <i class="pi pi-search m-1 img-search"></i>
+                            <input class="search m-1 form-control" type="text" (input)="filter(dt1, $event)" placeholder="   Rechercher" />
+                        </span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <button pButton label="Clear" class="p-button-outlined clear m-1" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                    </div>
+                </div>
+                </ng-template>
+            
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                            <div class="d-flex entete align-items-center justify-content-evenly">
+                                <p-sortIcon class="m-1" [field]="col.header" />
+                                {{ col.header }} 
+                                <p-columnFilter type="text" [field]="col.field" display="menu"/>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="d-flex entete align-items-center justify-content-evenly">
+                                Action
+                            </div>
+                        </th>
+                    </tr>
+                </ng-template>
+                
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr (click)="goToVerificationCheck(rowData)" class="rows border element">
+                        <td class="py-2 text-center">{{rowData.numBordereau}}</td>
+                        <td class="py-2 text-center">{{rowData.nomExportateur}}</td>
+                        <td class="py-2 text-center">{{rowData.nomCooperative}}</td>
+                        <td class="py-2 text-center">{{rowData.producteurList.length}}</td>
+                        <td class="py-2 text-center">{{rowData.lieuVente}}</td>
+                        <td class="py-2 text-center">{{rowData.dateVente | date: 'dd/MM/yyyy'}}</td>
+                        <td class="py-2 text-center"><span [ngClass]="rowData.statut" class="p-1 text-center">{{rowData.statut}}</span></td>
+                        <td class="py-2 text-center">
+                            <button class="btn btn-info" (click)="goToVerificationCheck(rowData)">Vérifier</button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>    
+        </div>
+    </div>
+</section>

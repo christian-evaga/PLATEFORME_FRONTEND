@@ -1,0 +1,61 @@
+@import '../../../../styles.scss';
+
+nav{
+    position: fixed;
+    height: 3.5rem;
+    // height: 100%;
+    width:85%;
+    background-color: white;
+    box-shadow: 2px 2px 2px 2px silver;
+    z-index: 5;
+    .left{
+        width: 80%;
+        .logo{
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+        }
+        .title{
+            color: $primary_brown;
+            font-weight: bold;
+        }
+    }
+    .right{
+        width: 20%;
+        background-color: $primary_green;
+        span{
+            font-size: x-small;
+            color: white;
+        }
+        .nombre{
+            position:absolute ;
+            background-color: red;
+            border-radius: 50%;
+            height: 15px;
+            width: 15px;
+            right: 14.3%;
+            top: 0.8rem;
+        }
+        svg{
+            cursor: pointer;
+        }
+    }
+}
+.menu{
+    position: fixed;
+    background-color: white;
+    z-index: 8;
+    right: 0;
+    top:9%;
+    font-size: small;
+    font-weight: 600;
+    border-radius: 0.2rem;
+    color: $primary_brown;
+    cursor: pointer;
+    .deconnexion{
+        width: 100%;
+        &:hover{
+            background-color: $secondary_smoke;
+        }
+    }
+}

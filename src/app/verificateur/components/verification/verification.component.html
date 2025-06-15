@@ -1,0 +1,164 @@
+<section class="content d-flex flex-column bg-white p-4">
+    <p class="fillAriane mb-2"><a (click)="goToListBordereau(1)">Accueil </a> -> <a (click)="goToListBordereau(2)">List bordereau </a> -> Verification</p>
+    <div class="d-flex flex-culums justify-content-between">
+        <div class="d-block">
+            <h5 class="title mb-3">Vérification du bordereau : <span class="prec"> ({{ bordereauVerifie.numBordereau }})</span></h5>
+        </div>
+        <div class="d-flex" *ngIf="!loading">
+            <input type="submit" value="Accepter le bordereau" class="btn btn-success mx-4" (click)="verifierBordereau('verify')" *ngIf="!(!verifInfoExportateur.value||!verifInfoVente.value||!verifInfoQuantite.value)">
+            <button class="btn btn-outline-danger mx-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop" *ngIf="!verifInfoExportateur.value||!verifInfoVente.value||!verifInfoQuantite.value">Rejeter le bordereau</button>
+        </div>
+    </div>
+    <form class="form">
+        <div class="typeProd d-flex align-items-center my-2">
+            <label>Type du produit : </label>
+            <div class="d-flex align-items-center">
+                <span class="type mx-2">{{bordereauVerifie.typeProduit | uppercase}}</span>
+                <div *ngIf="bordereauVerifie.typeProduit=='cacao'" class="tvc svg tb p-1 text-center">
+                    <svg width="20" height="20" fill="#932e24" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 570.277 570.277" xml:space="preserve" stroke="#932e24"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M528.279,262.465c-25.701-34.9-70.4-52.6-110.201-66.1c-39.799-13.5-96.1-28.8-138.3-19.6c2.4-59.4-19-110.8-98.5-100.4 c-5.5,0.6-8.6,4.3-10.4,8.6c-86.3,51.4-136.5,164-161,257c-14.7,55.1-25.7,170.2,64.9,151.2c74.1-15.3,122.4-84.5,155.4-153 c52.6,20.8,107.101,36.7,161.601,49.6c46.5,10.4,113.199,26.9,157.299,0C598.078,359.764,549.677,291.165,528.279,262.465z M386.279,211.665c42.199,9.8,84.5,26.9,116.299,56.9c20.201,18.399,39.801,48.3,41,72.199c-33.699-20.2-75.9-31.2-112.6-44.1 c-53.199-19-108.301-36.7-164-46.5h-0.6c5.5-17.7,9.8-36.7,12.2-55.7C313.478,204.265,350.779,203.065,386.279,211.665z M38.678,463.764c-29.4-25.7-2.4-123,5.5-149.3c23.9-76.5,67.3-167.1,135.3-215.399c0.6,0,1.8,0,2.4,0c26.3-3.1,44.1,1.8,55.7,12.2 c-4.9,0-9.8,2.4-11,8c-26.3,123-107.1,250.9-187.3,343.299C39.278,463.165,39.278,463.764,38.678,463.764z M228.378,282.665 c-29.4,74.7-74.1,155.399-153.6,183.599c-10.4,3.7-19,4.3-25.7,2.4c2.4,0,4.9-0.601,7.3-2.4c50.2-38.6,85.1-102.8,116.3-156.7 c32.4-55.699,67.3-119.999,76.5-184.799C269.978,165.165,246.178,239.765,228.378,282.665z M502.578,378.064 c-88.699,8-182.4-27.5-266.8-50.8c8.6-19.6,16.5-38.6,23.3-56.299c1.2-3.7,2.4-7.3,3.7-11c0.6,0,0.6,0.6,1.2,0.6 c49.6,15.9,97.9,32.399,146.301,51.399c41,16.5,84.5,40.4,127.898,49.6C531.978,370.764,520.978,376.264,502.578,378.064z"></path> </g> </g></svg>
+                </div>
+                <div *ngIf="bordereauVerifie.typeProduit!='cacao'"  class="svg tvca p-1 text-center">
+                    <svg fill="#932e24" height="20" width="20" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" stroke="#932e24"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M491.646,119.951c-0.677-1.171-1.538-2.2-2.244-3.348c-0.598-2.454-1.983-4.487-3.968-5.92 c-27.978-41.05-75.195-66.953-134.765-72.953c-62.793-6.346-131.677,10.031-194.091,46.068 c-62.404,36.031-111.042,87.546-136.94,145.049c-26.429,58.674-26.174,116.638,0.716,163.206 c26.889,46.573,76.958,75.772,140.987,82.221c8.82,0.889,17.773,1.334,26.807,1.334c55.209,0,113.648-16.439,167.273-47.401 c62.414-36.031,111.042-87.546,136.94-145.05C518.791,224.483,518.535,166.525,491.646,119.951z M38.719,237.442 c24.119-53.533,69.691-101.665,128.324-135.514C217.501,72.796,272.27,57.327,323.8,57.327c8.35,0,16.618,0.409,24.774,1.226 c46.795,4.717,84.807,22.871,109.982,51.515c-43.454,5.145-146.646,27.804-238.01,127.471 C124.661,342.144,50.869,365.075,32.508,369.382C15.479,330.96,17.433,284.724,38.719,237.442z M473.28,274.562 c-24.109,53.538-69.681,101.665-128.324,135.514c-58.633,33.854-123.112,49.292-181.52,43.374 c-53.82-5.423-96.07-28.55-120.404-65.097c27.937-7.645,100.638-35.976,192.946-136.669 c96.57-105.349,209.475-119.885,237.128-121.878c0.123,0.214,0.286,0.397,0.409,0.611 C496.95,171.001,496.869,222.194,473.28,274.562z"></path> </g> </g> </g></svg>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <h6 class=" mb-2">INFORMATION EXPORTATEUR</h6>
+            <div class="col-md-3 col-6">
+                <p class="text-secondary">Nom structure : <span class="mx-2 text-dark">{{ bordereauVerifie.nomEntrepriseExportateur }}</span></p>
+            </div>
+            <div class="col-md-3 col-6">
+                <p class="text-secondary">Numéro carte pro structure : <span class="mx-2 text-dark">{{ bordereauVerifie.codeEntrepriseExportateur }}</span></p>
+            </div>
+            <div class="col-md-3 col-6">
+                <p class="text-secondary">Nom mandataire : <span class="mx-2 text-dark">{{ bordereauVerifie.nomExportateur }}</span></p>
+            </div>
+            <div class="col-md-3 col-6">
+                <p class="text-secondary">Numéro carte pro mandataire: <span class="mx-2 text-dark">{{ bordereauVerifie.numCarteProExportateur }}</span></p>
+            </div>
+            <div class="col-md-3 col-12 justify-content-center align-items-center">
+                <label for="info-exportateur">Informations conformes</label>
+                <input [formControl]="verifInfoExportateur" type="checkbox" name="verifInfoExportateur" id="info-exportateur" class="mx-4">
+            </div>
+            <div class="col-md-9 col-12">
+                <textarea [formControl]="rapportInfoExportateur" name="rapportInfoExportateur" id="rapport-info-exportateur" class="form-control" *ngIf="!verifInfoExportateur.value"></textarea>
+                <textarea [formControl]="rapportInfoExportateur" name="rapportInfoExportateur" id="rapport-info-exportateur" class="form-control bg-secondary" *ngIf="verifInfoExportateur.value" readonly></textarea>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <h6 class=" mb-2">DETAIL DE LA VENTE</h6>
+            <div class="col-md-3 col-6">
+                <p class="text-secondary">Nom coopérative : <span class="mx-2 text-dark">{{ bordereauVerifie.nomCooperative }}</span></p>
+            </div>
+            <div class="col-md-3 col-6">
+                <p class="text-secondary">Tél coopérative : <span class="mx-2 text-dark">{{ bordereauVerifie.numeroCooperative }}</span></p>
+            </div>
+            <div class="col-md-3 col-6">
+                <p class="text-secondary">E-mail coopérative : <span class="mx-2 text-dark">{{ bordereauVerifie.emailCooperative }}</span></p>
+            </div>
+            <div class="col-md-3 col-6">
+                <p class="text-secondary">Date de la vente : <span class="mx-2 bg-light p-2 text-dark">{{ bordereauVerifie.dateVente | date: 'fullDate' }}</span></p>
+            </div>
+            <div class="col-md-3 col-6">
+                <p class="text-secondary">Nom responsable : <span class="mx-2 text-dark">{{ bordereauVerifie.nomVendeur }}</span></p>
+            </div>
+            <div class="col-md-3 col-6">
+                <p class="text-secondary">Tél responsable : <span class="mx-2 text-dark">{{ bordereauVerifie.numeroVendeur }}</span></p>
+            </div>
+            <div class="col-md-3 col-6">
+                <p class="text-secondary">E-mail responsable : <span class="mx-2 text-dark">{{ bordereauVerifie.emailVendeur }}</span></p>
+            </div>
+            <div class="col-md-3 col-6">
+                <p class="text-secondary" *ngIf="bordereauVerifie.typeProduit=='cacao'">Qualité : <span class="mx-2 bg-light p-2 text-dark" *ngIf="bordereauVerifie.volumeCacaoGrade1!=0">grade 1 </span><span class="mx-2 bg-light p-2 text-dark" *ngIf="bordereauVerifie.volumeCacaoGrade2!=0"> grade 2</span></p>
+                <p class="text-secondary" *ngIf="bordereauVerifie.typeProduit=='café'">Qualité : <span class="mx-2 bg-light p-2 text-dark" *ngIf="bordereauVerifie.volumeArabica!=0">ARABICA </span><span class="mx-2 bg-light p-2 text-dark" *ngIf="bordereauVerifie.volumeRobusta!=0"> grade 2</span></p>
+            </div>
+            <div class="col-md-3 col-6">
+                <p class="text-secondary">Région : <span class="mx-2 p-2 text-dark">{{ bordereauVerifie.regionVente }}</span></p>
+            </div>
+            <div class="col-md-3 col-6">
+                <p class="text-secondary">Département : <span class="mx-2 text-dark">{{ bordereauVerifie.departementVente }}</span></p>
+            </div>
+            <div class="col-md-3 col-6">
+                <p class="text-secondary">Arrondissement : <span class="mx-2 text-dark">{{ bordereauVerifie.departementVente }}</span></p>
+            </div>
+            <div class="col-md-3 col-6">
+                <p class="text-secondary">Lieu dit : <span class="mx-2 text-dark">{{ bordereauVerifie.lieuVente }}</span></p>
+            </div>
+            <div class="col-md-3 col-12 justify-content-center align-items-center">
+                <label for="info-vente">Informations conformes</label>
+                <input type="checkbox" [formControl]="verifInfoVente" name="verifInfoVente" id="info-vente" class="mx-4">
+            </div>
+            <div class="col-md-9 col-12">
+                <textarea [formControl]="rapportInfoVente" name="rapportInfoVente" id="rapport-info-vente" class="form-control" *ngIf="!verifInfoVente.value"></textarea>
+                <textarea [formControl]="rapportInfoVente" name="rapportInfoVente" id="rapport-info-vente" class="form-control bg-secondary" *ngIf="verifInfoVente.value" readonly></textarea>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <h6 class=" mb-2">VERIFICATION DES QUANTITES</h6>
+            <div class="col-6">
+                <p class="text-secondary">Quantité total du bordereau <span class="text-danger"> (en kilogramme Kg)</span>: <span class="mx-2 bg-light p-2 text-dark">{{ bordereauVerifie.volumeTotal }}</span></p>
+            </div>
+            <div class="col-6">
+                <p class="text-secondary">Quantité total calculé <span class="text-danger"> (en kilogramme Kg)</span>: <span class="mx-2 bg-light p-2 text-dark">{{ volumeCumul }}</span></p>
+            </div>
+            <div class="col-md-3 col-12 justify-content-center align-items-center">
+                <label for="info-quantite">Informations conformes</label>
+                <input type="checkbox" [formControl]="verifInfoQuantite" name="verifInfoQuantite" id="info-quantite" class="mx-4">
+            </div>
+            <div class="col-md-9 col-12">
+                <textarea [formControl]="rapportInfoQuantite" name="rapportInfoQuantite" id="rapport-info-quantite" class="form-control" *ngIf="!verifInfoQuantite.value"></textarea>
+                <textarea [formControl]="rapportInfoQuantite" name="rapportInfoQuantite" id="rapport-info-quantite" class="form-control bg-secondary" *ngIf="verifInfoQuantite.value" readonly></textarea>
+            </div>
+            <div class="col-12 my-4">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th>Nom producteur</th>
+                            <th>Numéro producteur</th>
+                            <th>Lieu de vente</th>
+                            <th>Quantité (en Kg)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let producteur of bordereauVerifie.producteurList">
+                            <td>{{ producteur.nom }}</td>
+                            <td>{{ producteur.phone }}</td>
+                            <td>{{ producteur.lieuDit }}</td>
+                            <td>{{ producteur.quantite }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="d-flex mt-5" *ngIf="!loading">
+            <input type="submit" value="Accepter le bordereau" class="btn btn-success" (click)="verifierBordereau('verify')" *ngIf="!(!verifInfoExportateur.value||!verifInfoVente.value||!verifInfoQuantite.value)">
+            <button class="btn btn-outline-danger mx-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop" *ngIf="!verifInfoExportateur.value||!verifInfoVente.value||!verifInfoQuantite.value">Rejeter le bordereau</button>
+        </div>
+    </form>
+    <app-loading *ngIf="loading"></app-loading>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Bordereau : ({{ bordereauVerifie.numBordereau }})</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center my-4">
+                    <h5>Êtes vous sûre de vouloir rejeté ce bordereau ?</h5>
+                    <button type="button" (click)="verifierBordereau('reject')" class="btn btn-outline-danger" data-bs-dismiss="modal">Rejeter le bordereau</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+      </div>
+    </div>
+</section>
+<app-popup></app-popup>

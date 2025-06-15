@@ -1,0 +1,46 @@
+@import '../../../../styles.scss';
+
+.sideBar{
+    position: fixed;
+    height: 100%;
+    width: 15%;
+    a{
+        color:black;
+        text-decoration: none;
+        font-size: smaller;
+        min-height: 2.5rem;
+        // height: 100%;
+    }
+    .active{
+        color: $primary_green;
+        font-weight: 500;
+        border-left: solid 0.4rem $primary_green;
+        background-color: rgba($primary_green, 0.1);
+    }
+    #sousOption{
+        a{
+            &:hover{
+                color: $primary_brown;
+                font-weight: 500;
+                background-color: rgba($secondary_smoke, 0.5);
+                border-left: solid 0.2rem $primary_brown;
+            }
+        }
+    }
+    .active2{
+        color: $primary_brown;
+        font-weight: 500;
+        background-color: rgba($secondary_smoke, 0.5);
+        border-left: solid 0.2rem $primary_brown;
+    }
+    .rotate{
+        transform: rotate(180deg);
+    }
+    .none{
+        display: none;
+    }
+    .view{
+        display:block;
+        width: 90%;
+    }
+}

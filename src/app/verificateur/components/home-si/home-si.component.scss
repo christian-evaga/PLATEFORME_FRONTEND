@@ -1,0 +1,24 @@
+@import "../../../../styles.scss";
+
+section{
+    .fillAriane{
+        font-size: small;
+        color: $primary_green;
+        a{
+            text-decoration: underline;
+            color: $primary_green;
+            cursor: pointer;
+        }
+    }
+    .title{
+        font-weight: 700;
+        .prec{
+            color: $primary_brown;
+            font-size:medium;
+        }
+    }
+    #map {
+        width: 100%;
+        height: 80vh;
+    }
+}

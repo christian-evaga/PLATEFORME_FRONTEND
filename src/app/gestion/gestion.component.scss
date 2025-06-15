@@ -1,0 +1,19 @@
+@import '../../styles.scss';
+
+section{
+    width: 100%;
+    .left{
+        width: 15%;
+        height: 100%;
+        // position: fixed;
+    }
+    .right{
+        width: 85%;
+        height: 100%;
+        min-height: 100vh;
+        background-color: rgba(237, 227, 227, 0.2);
+        .right-content{
+            margin-top: $header_hight;
+        }
+    }
+}

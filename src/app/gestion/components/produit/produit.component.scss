@@ -1,0 +1,21 @@
+@import "../../../../styles.scss";
+
+.pick{
+    background-color: $secondary_smoke;
+    color:$primary_brown;
+    border-radius: 0.2rem;
+    cursor: pointer;
+}
+.formu{
+    .listProducteur{
+        border-radius: 5px;
+        box-shadow: 0px -2px 0px silver;
+        
+    }
+    button{
+        font-size: smaller;
+    }
+    .requis{
+        color: $primary_red;
+    }
+}

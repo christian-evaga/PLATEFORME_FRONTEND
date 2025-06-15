@@ -1,0 +1,17 @@
+@import '../../styles.scss';
+
+.content{
+    width: 100%;
+    min-height: 100vh;
+    .left{
+        width: 15%;
+        // position: fixed;
+    }
+    .right{
+        width: 85%;
+        background-color: rgba(237, 227, 227, 0.6);
+        .right-content{
+            margin-top: $header_hight;
+        }
+    }
+}

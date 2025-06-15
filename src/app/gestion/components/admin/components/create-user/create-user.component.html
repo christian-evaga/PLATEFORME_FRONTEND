@@ -1,0 +1,99 @@
+ <span class="fillAriane mb-2"><span (click)="goToAdmin()" class="admin">Admin </span> ->Users</span>
+<div class="d-flex justify-content-center">
+    <!-- formulaire responsable -->
+    <div *ngIf="gestionService.currentUserType =='exportateurs'" class="right d-flex flex-column justify-content-center align-items-center p-1">
+        <img class="logo my-2" src="logo_fb.jpg" />
+        <span class="title text-center my-2">CREER UN NOUVEL <br/>EXPORTATEUR</span>
+        <form [formGroup]="userForm" *ngIf="!viewOtpForm" class="form row my-1 m-5 pb-3 formulaire">
+            <div class="nomstructure my-1 col-md-6 col-12 form-group">
+                <label class="">Nom de la structure :<span class="requis"> *</span></label>
+                <input [formControl]="nomStructureCtrl" type="text" class="form-control champ" placeholder="Nom de la structure" required/>
+            </div>
+            <div class="numeroStructure my-1 col-md-6 col-12 form-group">
+                <label class="">Numéro de la structure :<span class="requis"> *</span></label>
+                <input [formControl]="codeStructureCtrl" type="text" class="form-control champ" placeholder="Numéro de la structure" required/>
+            </div>
+            <div class="email my-1 col-md-6 col-12 form-group">
+                <label class="">Email :<span class="requis"> *</span></label>
+                <input [formControl]="mailCtrl" type="email" class="form-control champ" placeholder="Email" required/>
+            </div>
+            <div class="telephone my-1 col-md-6 col-12 form-group">
+                <label class="">Téléphone :<span class="requis"> *</span></label>
+                <input [formControl]="phoneCtrl" type="tel" class="form-control champ" placeholder="+237" required/>
+            </div>
+            <div *ngIf="gestionService.currentUserCreated == undefined" class="password my-1 col-12 form-group">
+                <label class="">Mot de passe :<span class="requis"> *</span></label>
+                <input [formControl]="passwordCtrl" type="password" class="form-control champ" placeholder="Entrez plus de 08 caractères" required/>
+            </div>
+            <div *ngIf="gestionService.currentUserCreated == undefined" class="confirmpassword my-1 col-12 form-group">
+                <label class="confirmpassword">Confirmez votre mot de passe :<span class="requis"> *</span></label>
+                <input [formControl]="passwordConfirmCtrl" type="password" class="form-control champ" placeholder="Confirmez votre mot de passe" required/>
+            </div>
+            <div class="d-flex my-3">
+                <input type="checkbox" class="form-check" id="confirm" required/>
+                <label for="confirm" class="mx-2">Je confirme que les informations de ce formulaire sont correctes et peuvent être utilisées selon les chartes du conseil interprofessionnel de Cacao&Café.</label> 
+            </div>
+            <button *ngIf="gestionService.currentUserCreated == undefined" (click)="createUser()" class="btn submit m-2">Créer</button>
+            <button *ngIf="gestionService.currentUserCreated != undefined" (click)="modifyUser()" class="btn submit m-2">Modifier</button>
+        </form>
+    
+        <!-- otpForm -->
+        <form *ngIf="viewOtpForm" class="form d-flex flex-column mt-2 mb-3 p-3 pb-4 formOtp justify-content-center">
+            <label class="text-center my-2">Entrer le code à 6 éléments reçu par mail <span class="requis"> *</span></label>
+            <div class="d-flex justify-content-between my-2 optBox">
+                <input [formControl]="otpCtrl" type="text" class="form-control"/>
+            </div>
+            <div class="text-center"><button (click)="verifyOtp()" class="py-2">Valider</button></div>
+           <div *ngIf="!viewDecompte" (click)="startTimer()" class="d-flex align-items-center justify-content-between mt-3">
+                <span  (click)="goToOptForm()" class="otpNot"> << Retour</span>
+                <div class="d-flex align-items-center justify-content-center otpNot">
+                    <span class="m-1">Me renvoyer le code </span> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#00a053"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M10 9H17M10 13H17M7 9H7.01M7 13H7.01M21 20L17.6757 18.3378C17.4237 18.2118 17.2977 18.1488 17.1656 18.1044C17.0484 18.065 16.9277 18.0365 16.8052 18.0193C16.6672 18 16.5263 18 16.2446 18H6.2C5.07989 18 4.51984 18 4.09202 17.782C3.71569 17.5903 3.40973 17.2843 3.21799 16.908C3 16.4802 3 15.9201 3 14.8V7.2C3 6.07989 3 5.51984 3.21799 5.09202C3.40973 4.71569 3.71569 4.40973 4.09202 4.21799C4.51984 4 5.0799 4 6.2 4H17.8C18.9201 4 19.4802 4 19.908 4.21799C20.2843 4.40973 20.5903 4.71569 20.782 5.09202C21 5.51984 21 6.0799 21 7.2V20Z" stroke="#00a153" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                </div>
+           </div>
+           <div *ngIf="viewDecompte" class="d-flex align-items-center decompte justify-content-center mt-3">
+                <span>{{minutes.toString().padStart(2, '0')}} : {{secondes.toString().padStart(2, '0')}}</span>
+           </div>
+        </form>
+    </div>
+
+    <!-- formulaire vérificateur -->
+    <div *ngIf="gestionService.currentUserType =='vérificateurs'" class="right d-flex flex-column justify-content-center align-items-center p-1">
+        <img class="logo my-2" src="logo_fb.jpg" />
+        <span class="title text-center my-2">CREER UN NOUVEAU <br/>VERIFICATEUR</span>
+        <form [formGroup]="verificateurForm" class="form row my-1 m-5 pb-3 formulaire">
+            <div class="name my-1 col-md-6 col-12 form-group">
+                <label class="">Nom du vérificateur:<span class="requis"> *</span></label>
+                <input [formControl]="nameCtrl" type="text" class="form-control champ" placeholder="Nom de la structure" required/>
+            </div>
+            <div class="service my-1 col-md-6 col-12 form-group">
+                <label class="">Service :<span class="requis"> *</span></label>
+                <input [formControl]="serviceCtrl" type="text" class="form-control champ" placeholder="Service" required/>
+            </div>
+            <div class="email my-1 col-md-6 col-12 form-group">
+                <label class="">Email :<span class="requis"> *</span></label>
+                <input [formControl]="mailVCtrl" type="email" class="form-control champ" placeholder="Email" required/>
+            </div>
+            <div class="telephone my-1 col-md-6 col-12 form-group">
+                <label class="">Téléphone :<span class="requis"> *</span></label>
+                <input [formControl]="phoneVCtrl" type="tel" class="form-control champ" placeholder="+237" required/>
+            </div>
+            <div class="password my-1 col-12 form-group">
+                <label class="">Mot de passe :<span class="requis"> *</span></label>
+                <input [formControl]="passwordVCtrl" type="password" class="form-control champ" placeholder="Entrez plus de 08 caractères" required/>
+            </div>
+            <div class="confirmpassword my-1 col-12 form-group">
+                <label class="confirmpassword">Confirmez votre mot de passe :<span class="requis"> *</span></label>
+                <input [formControl]="passwordConfirmVCtrl" type="password" class="form-control champ" placeholder="Confirmez votre mot de passe" required/>
+            </div>
+            <div class="d-flex my-3">
+                <input type="checkbox" class="form-check" id="confirmVerificateur" required/>
+                <label for="confirm" class="mx-2">Je confirme que les informations de ce formulaire sont correctes et peuvent être utilisées selon les chartes du conseil interprofessionnel de Cacao&Café.</label> 
+            </div>
+            <button *ngIf="gestionService.currentUserCreated == undefined" (click)="createVerificateur()" class="btn submit m-2">Créer</button>
+            <button *ngIf="gestionService.currentUserCreated != undefined" (click)="modifyVerificateur()" class="btn submit m-2">Modifier</button>
+        </form>
+        
+    </div>
+</div>
+
+<app-popup></app-popup>

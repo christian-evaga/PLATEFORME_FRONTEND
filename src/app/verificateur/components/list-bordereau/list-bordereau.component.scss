@@ -1,0 +1,117 @@
+@import "../../../../styles.scss";
+
+.content{
+    min-height: 85vh;
+    height: 100%;
+    .fillAriane{
+        font-size: small;
+        color: $primary_green;
+        a{
+            text-decoration: underline;
+            color: $primary_green;
+            cursor: pointer;
+        }
+    }
+    .title{
+        font-weight: 700;
+        .prec{
+            color: $primary_brown;
+            font-size:medium;
+        }
+    }
+    .filtre{
+        width: 20rem;
+        font-size: smaller;
+        label{
+            font-weight: 500;
+            font-size: 17px;
+        }
+        select{
+            width: 60%;
+            border:solid 1px rgb(238, 232, 232);
+            border-radius: 0.2rem;
+            cursor: pointer;
+            &:focus{
+                border:solid 1px rgb(199, 195, 195);
+            }
+        }
+    }
+    .resultContent{
+        background-color: white;
+        border-radius: 0.2rem;
+        // min-height: 25rem;
+        height: 100%;
+        font-size: smaller;
+        .directory{
+            color: $primary-green;
+            font-weight: bold;
+        }
+        .clear{
+            border-radius: 0.2rem;
+            height: 2rem;
+            width: 5.5rem;
+            font-size: small;
+        }
+        .search{
+            border-radius: 0.2rem;
+            font-size: small;
+            height: 2rem;
+            width: 10rem;
+            border: solid 1px rgba(gray, 0.2);
+            color: $primary-green;
+        }
+        .img-search{
+            position: absolute;
+            left:1.2rem;
+            color: rgba($primary_brown, 0.8);
+        }
+        .entete{
+            width: 12rem;
+        }
+        th{
+            color: $primary_brown;
+            font-weight: 500;
+            &:hover, &:focus, &:active{
+                color: $primary_green;
+            }
+        }
+        tr{
+            cursor:pointer;
+        }
+        .element{
+            &:hover{
+                background-color: $primary_blue;
+            }
+        }
+        .send{
+            background-color: $secondary_smoke;
+            color: $primary_brown;
+            font-weight: 500;
+            border-radius: 0.2rem;
+        }
+        .answered{
+            background-color: $primary_green;
+            color: white;
+            font-weight: 500;
+            border-radius: 0.2rem;
+        }
+        .verify{
+            background-color: $primary_blue;
+            color: white;
+            font-weight: 500;
+            border-radius: 0.2rem;
+        }
+        .pending{
+            background-color: rgb(218, 61, 14);
+            color: white;
+            font-weight: 500;
+            border-radius: 0.2rem;
+        }
+        .reject{
+            background-color: $primary_red;
+            color: white;
+            font-weight: 500;
+            border-radius: 0.2rem;
+        }
+    }
+}

@@ -1,0 +1,80 @@
+<section class="content d-flex flex-column">
+    <span class="fillAriane mb-2"><span (click)="goToHistorique()" class="accueil">Accueil </span>-> Bordereaux</span>
+    <span class="title h5">Liste des bordereaux <span class="prec"> ({{bordereaux.length}})</span></span>
+    <!-- <div class="filtre d-flex justify-content-between align-items-center p-2 mt-3">
+        <label>Statut :</label>
+        <select class="formSelect p-1">
+            <option>Accepté</option>
+            <option>Refusé</option>
+            <option>En attente</option>
+        </select>
+    </div> -->
+    <div class="resultContent d-flex flex-column mt-1 p-2">
+        
+        <p-table class="" styleClass="p-datatable-striped"  
+         #dt1
+         [paginator]="true"
+         [rows]="10"
+         [showCurrentPageReport]="true"
+         [rowsPerPageOptions]="[5, 10, 25, 50]"
+         sortMode="multiple"
+         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+         [globalFilterFields]="[cols[0].field, cols[1].field, cols[2].field, cols[3].field, cols[4].field, cols[5].field, cols[6].field]"
+         [columns]="cols" 
+         [value]="bordereaux" 
+         [tableStyle]="{ 'min-width': '64.5rem' }"
+         >
+
+         <ng-template class="border" pTemplate="caption">
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                <div class="d-flex justify-content-between">
+                    <span class="d-flex justify-content-evenly align-items-center">
+                        <i class="pi pi-search m-1 img-search"></i>
+                        <input class="search m-1 form-control" type="text" (input)="filter(dt1, $event)" placeholder="   Rechercher" />
+                    </span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <button pButton label="Clear" class="p-button-outlined clear m-1" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                </div>
+            </div>
+            </ng-template>
+        
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                        <div class="d-flex entete align-items-center justify-content-evenly">
+                            <p-sortIcon class="m-1" [field]="col.header" />
+                            {{ col.header }} 
+                            <p-columnFilter type="text" [field]="col.field" display="menu"/>
+                        </div>
+                    </th>
+                </tr>
+            </ng-template>
+            
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr (click)="action(rowData)" class="rows border element">
+                    <!-- <td class="py-2 text-center" *ngFor="let col of columns">
+                        {{ rowData[col.field] }}
+                    </td> -->
+                    <td class="py-2 text-center">{{rowData.numBordereau}}</td>
+                    <td class="py-2 text-center">{{rowData.nomExportateur}}</td>
+                    <td class="py-2 text-center">{{rowData.nomCooperative}}</td>
+                    <td class="py-2 text-center">{{rowData.producteurList.length}}</td>
+                    <td class="py-2 text-center">{{rowData.lieuVente}}</td>
+                    <td class="py-2 text-center">{{rowData.dateVente | date: 'dd/MM/yyyy'}}</td>
+                    <td class="py-2 text-center"><span [ngClass]="rowData.statut" class="p-1 text-center">{{rowData.statut}}</span></td>
+                </tr>
+            </ng-template>
+        </p-table>    
+        </div>
+    <button (click)="addNewBordereau()" class="add text-center btn">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M13 3C13 2.44772 12.5523 2 12 2C11.4477 2 11 2.44772 11 3V11H3C2.44772 11 2 11.4477 2 12C2 12.5523 2.44772 13 3 13H11V21C11 21.5523 11.4477 22 12 22C12.5523 22 13 21.5523 13 21V13H21C21.5523 13 22 12.5523 22 12C22 11.4477 21.5523 11 21 11H13V3Z" fill="#00a153"></path> </g></svg>
+    </button>
+</section>
+<div (click)="annuler()" *ngIf="view" class="confirm d-flex justify-content-center align-items-center">
+    <div class=" d-flex flex-column delete-confirm border text-center justify-content-center p-2">
+        <span class="mb-3">Il n'est pas encore possible d'apporter des modifications à ce bordereau</span>
+        <button (click)="annuler()" class="btn btn-success">OK</button>
+    </div>
+</div>
+<app-loading *ngIf="loading"></app-loading>

@@ -1,0 +1,12 @@
+.loading{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    width: 85%;
+    height: 90vh;
+    background: rgba(128, 128, 128, 0.274);
+    img{
+        width: 10rem;
+    }
+}

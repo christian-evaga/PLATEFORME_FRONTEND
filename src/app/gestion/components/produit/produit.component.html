@@ -1,0 +1,44 @@
+<div (click)="show()" class="pick d-flex justify-content-between p-2">
+    <span class="">{{nomCtrl.value}}</span>
+    <span class="">{{phoneCtrl.value}}</span>
+    <span class="">{{lieuDitCtrl.value}}</span>
+</div>
+
+<form *ngIf="view" [formGroup]="produitForm" class="form">
+    <div class="listProducteur row my-1">
+        <div class="nomProducteur form-group col-md-4 col-12">
+            <label class="">Nom du producteur :<span class="requis"> *</span></label>
+            <input [formControl]="nomCtrl" type="text" class="form-control" placeholder="Nom du producteur" required/>
+        </div>
+        <div class="tel form-group col-md-4 col-12">
+            <label class="">Numéro de téléphone :<span class="requis"> *</span></label>
+            <input [formControl]="phoneCtrl" type="tel" class="form-control" placeholder="+237" required/>
+        </div>
+        <div class="quantité form-group col-md-4 col-12">
+            <label class="">Quantité(en kilogramme) :<span class="requis"> *</span></label>
+            <input [formControl]="quantiteCtrl" type="text" class="form-control" placeholder="Ex:35" required/>
+        </div>
+    </div>
+    <div class="row my-1">
+        <div class="region form-group col-md-3 col-12">
+            <label class="">Région :<span class="requis"> *</span></label>
+            <input [formControl]="regionCtrl" type="text" class="form-control" placeholder="Région" required/>
+        </div>
+        <div class="departement form-group col-md-3 col-12">
+            <label class="">Département :<span class="requis"> *</span></label>
+            <input [formControl]="departementCtrl" type="text" class="form-control" placeholder="Département" required/>
+        </div>
+        <div class="arrondissement form-group col-md-3 col-12">
+            <label class="">Arrondissement :<span class="requis"> *</span></label>
+            <input [formControl]="arrondissementCtrl" type="text" class="form-control" placeholder="Arrondissement" required/>
+        </div>
+        <div class="lieuDit form-group col-md-3 col-12">
+            <label class="">Lieu dit de la vente(exacte) :<span class="requis"> *</span></label>
+            <input [formControl]="lieuDitCtrl" type="text" class="form-control" placeholder="Lieu dit" required/>
+        </div>
+    </div><hr/>
+    <div class="option d-flex align-items-center">
+        <!-- <button (click)="enregistrerProduit($event)" class="btn btn-outline-success p-1 my-1">Enregistrer le producteur</button> -->
+        <button (click)="supprimerProduit($event)" class="btn btn-outline-danger p-1 my-1 mx-2">Supprimer le producteur</button>
+    </div>
+</form>

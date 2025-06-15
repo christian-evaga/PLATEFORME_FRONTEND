@@ -1,0 +1,22 @@
+@import "../../../../styles.scss";
+
+.content{
+    min-height: 85vh;
+    height: 100%;
+    .fillAriane{
+        font-size: small;
+        color: $primary_green;
+        a{
+            text-decoration: underline;
+            color: $primary_green;
+            cursor: pointer;
+        }
+    }
+    .title{
+        font-weight: 700;
+        .prec{
+            color: $primary_brown;
+            font-size:medium;
+        }
+    }
+}

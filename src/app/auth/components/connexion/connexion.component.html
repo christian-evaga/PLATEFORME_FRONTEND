@@ -1,0 +1,41 @@
+<section class="contenant d-flex">
+    <div class="left col-md-6 d-md-flex d-none">
+        <img class="logo my-2" src="logo_fb.jpg" />
+    </div>
+    <div class="right col-md-6 col-12 d-flex flex-column justify-content-center align-items-center">
+        <div class="isVerif d-flex">
+            <a href="#" (click)="typeLogin(true)" class="nav-link" *ngIf="!isVerificateur">Connexion vérificateur</a>
+            <a href="#" (click)="typeLogin(false)" class="nav-link" *ngIf="isVerificateur">Connexion utilisateur</a>
+        </div>
+        <img class="logo my-2" src="logo_fb.jpg" />
+        <span class="title text-center my-2">BIENVENUE SUR LA PLATEFORME DE <br/> DE MUTUALISATION DE DONNEES DE GEOLOCALISATION <br/>DES PARCELLES DE CACAO & CAFE</span>
+        
+        <h2 class="my-2 text-success" *ngIf="!isVerificateur"><u>Connexion</u></h2>
+        <h2 class="my-2 text-success" *ngIf="isVerificateur"><u>Connexion vérificateur</u></h2>
+
+        <form [formGroup]="loginForm" class="form d-flex flex-column my-2 p-2 pb-4 formulaire">
+            <div class="email my-1">
+                <label class="">Email :<span class="requis"> *</span></label>
+                <input [formControl]="mailCtrl" type="email" class="form-control champ" placeholder="Email" required/>
+            </div>
+            <div class="password my-1">
+                <label class="">Mot de passe :<span class="requis"> *</span></label>
+                <input [formControl]="passwordCtrl" type="password" class="form-control champ" placeholder="Entrez plus de 08 caractères" required/>
+            </div>
+            <div class="password my-1" *ngIf="isVerificateur">
+                <label class="">Code vérificateur :<span class="requis"> *</span></label>
+                <input [formControl]="verificateurCtrl" type="text" class="form-control champ" placeholder="Entrez votre code de verificateur"/>
+            </div>
+            <span class="forget_pass mb-2">Mot de passe oublié ?</span>
+            <button (click)="login()" *ngIf="!loading" class="btn submit my-2">Connexion</button>
+            <button *ngIf="loading" class="btn btn-outline-secondary my-2" readonly>Connexion</button>
+            <span class="my-2 new text-center">Vous êtes nouveau ?</span>
+            <span class="creation_compte text-center" (click)="goToInscription()">Cliquez ici pour créer un compte</span>
+        </form>
+    </div>
+</section>
+<app-popup></app-popup>
+<!-- <app-popup *ngIf="display==true" [display]="display" [message]="texte" [typePopup]="typeP"></app-popup> -->
+<div *ngIf="loading" class="load d-flex justify-content-center align-items-center">
+    <img src="../../../../assets/images/loading2.gif" alt="">
+</div>
